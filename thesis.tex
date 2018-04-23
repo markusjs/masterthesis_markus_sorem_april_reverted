@@ -1,0 +1,102 @@
+\RequirePackage{silence}
+\WarningFilter{latex}{You have requested document class}
+\WarningFilter{latex}{You have requested package}
+
+\documentclass[UKenglish, oneside]{ifimaster}  %% ... or USenglish or norsk or nynorsk
+\raggedbottom
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}           %% ... or latin1 or applemac
+\usepackage[T1]{fontenc,url}
+\usepackage{float}
+\usepackage{hyperref}
+\urlstyle{sf}
+\usepackage{textcomp,csquotes,duoforside/duomasterforside,varioref,graphicx}
+\renewcommand{\mkbegdispquote}[2]{\itshape}
+
+\usepackage[acronym, toc]{glossaries}
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
+
+\usepackage{caption} 
+\captionsetup[table]{skip=8pt}
+
+\usepackage{footnote}
+\usepackage{threeparttable}
+\renewcommand{\baselinestretch}{1.5}
+%\usepackage[utf8]{inputenc}
+ 
+\usepackage{epigraph, varwidth}
+\renewcommand{\epigraphrule}{0pt}
+\setlength{\epigraphwidth}{1\textwidth}
+%\renewcommand{\textflush}{flushepinormal}
+%\setlength{\epigraphrule}{0pt}
+%\setlength{\epigraphwidth}{0.8\textwidth}
+%\renewcommand{\textflush}{flushright}
+\renewcommand{\sourceflush}{flushright}
+\renewcommand{\epigraphsize}{\large}
+%\renewcommand{\episourcesize}{\large}
+
+%\usepackage[backend=biber,style=apa, citestyle=authoryear]{biblatex}
+\usepackage[british]{babel}
+%\usepackage{natbib}
+%\usepackage{authordate}
+\usepackage[backend=biber, style=apa, citestyle=authoryear, uniquename=false]{biblatex}
+\DeclareLanguageMapping{british}{british-apa}
+
+%\DeclareLanguageMapping{british}{british-apa}
+%\title{Empathy tools as a way to universal designed ICT solutions?}
+\title{Impairment simulators as a way to universal designed ICT solutions?}
+%\subtitle{A critical exploratory study}
+%\subtitle{Can empathy tools}
+\author{Markus J. Sørem}
+\makenoidxglossaries
+%\makeglossaries
+\input{glossary.tex}
+%%\addbibresource{bibliography/bibliography.bib}
+%%\bibliographystyle{apalike}
+%\bibliography{citations}                  %% ... or whatever
+\addbibresource{citations.bib}
+%\addbibresource{mendeley.bib}
+
+\begin{document}
+  
+\duoforside[dept={Department of Informatics},   %% ... or your department
+  program={Informatics: Design, Use and Interaction},  %% ... or your programme
+  long]                                        %% ... or long
+
+\frontmatter{}
+%\chapter*{Abstract}                   %% ... or Sammendrag or Samandrag
+
+\tableofcontents{}
+\printnoidxglossary
+%\listoffigures{}
+%\listoftables{}
+
+%\chapter*{Preface}                    %% ... or Forord
+
+\mainmatter{}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{%
+\markboth{#1}{}}
+\fancyhf{}
+\fancyhead[RO]{\emph{\nouppercase{\leftmark}}}
+\fancyhead[LE]{\emph{\hyperlink{toc}{Chapter \thechapter}}}
+\setlength{\headheight}{14.50pt}% ...at least 51.60004pt
+\cfoot{\thepage}
+
+%\part{Introduction}
+\input{chapters/01-introduction}
+\input{chapters/02-case}
+
+%\part{The project}
+\input{chapters/03-theory}
+\input{chapters/04-methods}
+
+
+%\part{Results and discussion}
+\input{chapters/05-results}
+\input{chapters/06-discussion}
+
+\backmatter{}
+\printbibliography
+\end{document}
